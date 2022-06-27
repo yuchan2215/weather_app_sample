@@ -20,7 +20,7 @@ class SettingNotifier extends StateNotifier<SettingState> {
       throw ItemIsExistException(region);
     }
     //地域一覧に追加する。
-    var regions = state.regions ?? [];
+    var regions = state.regions?.toList() ?? [];
     regions.add(region);
 
     state = state.copyWith(regions: regions);
@@ -29,12 +29,12 @@ class SettingNotifier extends StateNotifier<SettingState> {
   ///[region]を地域一覧から削除します。
   ///存在しない場合には[ItemIsNotExistException]となります。
   void removeRegion(String region) async {
-    if (state.regions?.contains(region) ?? false == false) {
+    if (state.regions?.contains(region) == false) {
       //含まれていないなら
       throw ItemIsNotExistException(region);
     }
     //地域一覧から削除する。
-    var regions = state.regions ?? [];
+    var regions = state.regions?.toList() ?? [];
     regions.remove(region);
 
     state = state.copyWith(regions: regions);
