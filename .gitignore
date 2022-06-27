@@ -358,3 +358,6 @@ hs_err_pid*
 
 # DiscordPlugin
 .idea/discord.xml
+
+# Codic
+.idea/CodicPluginSettings.xml
