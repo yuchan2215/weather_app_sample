@@ -1,7 +1,6 @@
 import 'package:async/async.dart';
 import 'package:flutter/material.dart';
 import 'package:weather_app_sample/core/api_key.dart';
-import 'package:weather_app_sample/core/secure_storage.dart';
 import 'package:weather_app_sample/view/top.dart';
 
 class MyApp extends StatelessWidget {
@@ -32,7 +31,7 @@ class MyApp extends StatelessWidget {
   Future<bool> _load() async {
     return await _memoizer.runOnce(() async {
       debugPrint("_loadが呼び出されたよ！");
-      await ApiKey.loadStorage(SecureStorage.storage);
+      await ApiKey.loadStorage();
       return Future<bool>.value(true);
     });
   }
