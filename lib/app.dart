@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-
-import 'pages/top.dart';
+import 'package:weather_app_sample/view/top.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
-
 
   @override
   Widget build(BuildContext context) {
