@@ -17,6 +17,7 @@ dependencies:
       url: https://github.com/yuchan2215/FlutterToast.git
       ref: fix-duration
   flutter_secure_storage: ^5.0.2
+  async: ^2.9.0
 
 
 dev_dependencies:
