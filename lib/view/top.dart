@@ -3,7 +3,6 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:weather_app_sample/component/string_from_dialog.dart';
 import 'package:weather_app_sample/component/toast_widget.dart';
-import 'package:weather_app_sample/viewmodel/setting_notifier.dart';
 
 class MyHomePage extends ConsumerWidget {
   const MyHomePage({
@@ -63,7 +62,7 @@ class MyHomePage extends ConsumerWidget {
           ),
         );
       } else {
-        ref.read(settingProvider.notifier).updateApiKey(v);
+        //TODO APIキーを保存する処理
         fToast.showToast(
           child: ToastWidget(
             backgroundColor: Theme.of(context).primaryColor,

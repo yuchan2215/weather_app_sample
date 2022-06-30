@@ -15,12 +15,6 @@ void main() {
     ItemIsNotExistException("").toString();
     ItemIsExistException("").toString();
   });
-  test("APIキー関連動作のテスト", () {
-    expect(target.debugState.apiKey, null);
-    var testApiKey = "TestTest";
-    target.updateApiKey(testApiKey);
-    expect(target.debugState.apiKey, testApiKey);
-  });
   test("地域動作のテスト", () {
     expect(target.debugState.regions, null);
     var testRegion1 = "Tokyo";

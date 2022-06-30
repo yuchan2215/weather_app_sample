@@ -16,7 +16,6 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$SettingState {
-  String? get apiKey => throw _privateConstructorUsedError;
   List<String>? get regions => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -29,7 +28,7 @@ abstract class $SettingStateCopyWith<$Res> {
   factory $SettingStateCopyWith(
           SettingState value, $Res Function(SettingState) then) =
       _$SettingStateCopyWithImpl<$Res>;
-  $Res call({String? apiKey, List<String>? regions});
+  $Res call({List<String>? regions});
 }
 
 /// @nodoc
@@ -42,14 +41,9 @@ class _$SettingStateCopyWithImpl<$Res> implements $SettingStateCopyWith<$Res> {
 
   @override
   $Res call({
-    Object? apiKey = freezed,
     Object? regions = freezed,
   }) {
     return _then(_value.copyWith(
-      apiKey: apiKey == freezed
-          ? _value.apiKey
-          : apiKey // ignore: cast_nullable_to_non_nullable
-              as String?,
       regions: regions == freezed
           ? _value.regions
           : regions // ignore: cast_nullable_to_non_nullable
@@ -65,7 +59,7 @@ abstract class _$$_SettingStateCopyWith<$Res>
           _$_SettingState value, $Res Function(_$_SettingState) then) =
       __$$_SettingStateCopyWithImpl<$Res>;
   @override
-  $Res call({String? apiKey, List<String>? regions});
+  $Res call({List<String>? regions});
 }
 
 /// @nodoc
@@ -81,14 +75,9 @@ class __$$_SettingStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? apiKey = freezed,
     Object? regions = freezed,
   }) {
     return _then(_$_SettingState(
-      apiKey: apiKey == freezed
-          ? _value.apiKey
-          : apiKey // ignore: cast_nullable_to_non_nullable
-              as String?,
       regions: regions == freezed
           ? _value._regions
           : regions // ignore: cast_nullable_to_non_nullable
@@ -100,11 +89,8 @@ class __$$_SettingStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_SettingState implements _SettingState {
-  const _$_SettingState({this.apiKey, final List<String>? regions})
-      : _regions = regions;
+  const _$_SettingState({final List<String>? regions}) : _regions = regions;
 
-  @override
-  final String? apiKey;
   final List<String>? _regions;
   @override
   List<String>? get regions {
@@ -116,7 +102,7 @@ class _$_SettingState implements _SettingState {
 
   @override
   String toString() {
-    return 'SettingState(apiKey: $apiKey, regions: $regions)';
+    return 'SettingState(regions: $regions)';
   }
 
   @override
@@ -124,15 +110,12 @@ class _$_SettingState implements _SettingState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_SettingState &&
-            const DeepCollectionEquality().equals(other.apiKey, apiKey) &&
             const DeepCollectionEquality().equals(other._regions, _regions));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(apiKey),
-      const DeepCollectionEquality().hash(_regions));
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_regions));
 
   @JsonKey(ignore: true)
   @override
@@ -141,11 +124,8 @@ class _$_SettingState implements _SettingState {
 }
 
 abstract class _SettingState implements SettingState {
-  const factory _SettingState(
-      {final String? apiKey, final List<String>? regions}) = _$_SettingState;
+  const factory _SettingState({final List<String>? regions}) = _$_SettingState;
 
-  @override
-  String? get apiKey => throw _privateConstructorUsedError;
   @override
   List<String>? get regions => throw _privateConstructorUsedError;
   @override
