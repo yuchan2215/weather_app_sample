@@ -3,7 +3,6 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:weather_app_sample/component/string_from_dialog.dart';
 import 'package:weather_app_sample/component/toast_widget.dart';
-import 'package:weather_app_sample/model/setting_state.dart';
 import 'package:weather_app_sample/viewmodel/setting_notifier.dart';
 
 class MyHomePage extends ConsumerWidget {
@@ -13,16 +12,17 @@ class MyHomePage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    FToast fToast = FToast().init(context);
     return Scaffold(
       appBar: AppBar(
         title: const Text("お天気アプリ"),
       ),
-      drawer: drawer(),
+      drawer: drawer(fToast, context, ref),
       body: Center(child: Text("Hello")),
     );
   }
 
-  Drawer drawer() => Drawer(
+  Drawer drawer(FToast fToast, BuildContext context, WidgetRef ref) => Drawer(
         child: SafeArea(
           child: ListView(
             children: <Widget>[
@@ -31,7 +31,7 @@ class MyHomePage extends ConsumerWidget {
               ),
               ListTile(
                 title: const Text("APIキーの設定"),
-                onTap: () {},
+                onTap: () => showApiKeyConfiguration(fToast, context, ref),
               ),
               ListTile(
                 title: const Text("地域の設定"),
