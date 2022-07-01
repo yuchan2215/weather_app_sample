@@ -3,7 +3,6 @@ import 'package:test/test.dart';
 
 void main() {
   late FlutterDriver driver;
-  late VMServiceFlutterDriver vmDriver;
   setUpAll(() async {
     driver = await FlutterDriver.connect();
   });
