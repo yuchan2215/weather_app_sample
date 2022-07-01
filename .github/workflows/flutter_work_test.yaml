@@ -1,0 +1,41 @@
+name: flutter integration test
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+  pull_request:
+    branches:
+      - main
+      - develop
+
+jobs:
+  integration_test:
+    strategy:
+      matrix:
+        device:
+          - "iPhone 12 Pro Max Simulator"
+          - "iPhone 12 Simulator"
+      fail-fast: false
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: "list"
+        run: |
+          xcrun xctrace list devices
+      - name: "start simulator"
+        timeout-minutes: 10
+        run: |
+          FIND="iPhone 11 Pro"
+          FIND_REGEX=".*\(([0-9A-Z-]+)\)$"
+          UDID=$(
+            xcrun xctrace list devices | grep "$FIND Simulator" |
+            grep -v "Apple Watch" |
+            sed -r "s/$FIND_REGEX/\1/"
+          )
+          xcrun simctl boot "${UDID:?No Simulator with this name found}"
+      - uses: subosito/flutter-action@v1
+        with:
+          flutter-version: '3.0.3'
+      - run: "flutter drive --target=test_driver/app.dart"
