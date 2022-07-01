@@ -17,7 +17,7 @@ class MyHomePage extends ConsumerWidget {
         title: const Text("お天気アプリ"),
       ),
       drawer: drawer(fToast, context, ref),
-      body: Center(child: Text("Hello")),
+      body: const Center(child: Text("Hello")),
     );
   }
 
