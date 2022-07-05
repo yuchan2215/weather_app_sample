@@ -3,9 +3,14 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:weather_app_sample/component/string_from_dialog.dart';
 import 'package:weather_app_sample/component/toast_widget.dart';
+import 'package:weather_app_sample/core/api_key.dart';
+
+import '../constant/debug_keys.dart';
 
 class MyHomePage extends ConsumerWidget {
-  const MyHomePage({
+  final _scaffoldKey = GlobalKey<ScaffoldState>();
+
+  MyHomePage({
     Key? key,
   }) : super(key: key);
 
@@ -13,8 +18,14 @@ class MyHomePage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     FToast fToast = FToast().init(context);
     return Scaffold(
+      key: _scaffoldKey,
       appBar: AppBar(
         title: const Text("お天気アプリ"),
+        leading: IconButton(
+          key: drawerKey,
+          icon: const Icon(Icons.menu),
+          onPressed: () => _scaffoldKey.currentState?.openDrawer(),
+        ),
       ),
       drawer: drawer(fToast, context, ref),
       body: const Center(child: Text("Hello")),
@@ -29,6 +40,7 @@ class MyHomePage extends ConsumerWidget {
                 child: Text("お天気アプリ"),
               ),
               ListTile(
+                key: settingApiKeyOpenKey,
                 title: const Text("APIキーの設定"),
                 onTap: () => showApiKeyConfiguration(fToast, context, ref),
               ),
@@ -49,7 +61,7 @@ class MyHomePage extends ConsumerWidget {
       context,
       title: "APIキーの設定",
       desc: "APIキーを入力してください。",
-    ).then((v) {
+    ).then((v) async {
       fToast.removeCustomToast();
       fToast.removeQueuedCustomToasts();
       if (v == null || v.isEmpty) {
@@ -62,7 +74,7 @@ class MyHomePage extends ConsumerWidget {
           ),
         );
       } else {
-        //TODO APIキーを保存する処理
+        await ApiKey.saveStorage(v);
         fToast.showToast(
           child: ToastWidget(
             backgroundColor: Theme.of(context).primaryColor,

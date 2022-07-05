@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:weather_app_sample/constant/debug_keys.dart';
 
 /// ダイアログを表示して、[String]型の入力を受け取ります。
 /// タイトルは[title]、説明は[desc]に入力します。
@@ -14,11 +15,16 @@ Future<String?> getStringFromDialog(BuildContext context,
         String text = ""; //入力されたテキストを一時的に格納しておく。
         return AlertDialog(
             title: Text(title),
-            content: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [Text(desc), TextField(onChanged: (v) => text = v)]),
+            content: Column(mainAxisSize: MainAxisSize.min, children: [
+              Text(desc),
+              TextField(
+                key: apiKeyTextFieldKey,
+                onChanged: (v) => text = v,
+              )
+            ]),
             actions: <Widget>[
               TextButton(
+                key: opBtnKey,
                 child: Text(okBtnText),
                 onPressed: () {
                   //入力値をpopする

@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
         future: _load(), //async function
         builder: (context, sc) {
           if (sc.hasData) {
-            return const MyHomePage();
+            return MyHomePage();
           } else {
             return const Scaffold();
           }
