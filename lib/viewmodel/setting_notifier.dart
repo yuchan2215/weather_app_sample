@@ -5,13 +5,8 @@ import 'package:weather_app_sample/model/setting_state.dart';
 
 class SettingNotifier extends StateNotifier<SettingState> {
   SettingNotifier({String? apiKey, List<String>? regions})
-      : super(SettingState(apiKey: apiKey, regions: regions));
-
-  ///APIキーの値を[newApiKey]に変更します。
-  void updateApiKey(String newApiKey) async {
-    state = state.copyWith(apiKey: newApiKey);
-  }
-
+      : super(SettingState(regions: regions));
+  
   /// [region]を地域一覧に追加します。
   /// すでに存在する場合には[ItemIsExistException]となります。
   void addRegion(String region) async {
