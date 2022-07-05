@@ -20,4 +20,4 @@ flutter pub get
 cd ios || exit 1
 pod install
 cd ../
-flutter drive --target=test_driver/app.dart -d "$UDID"
+flutter drive --driver=test_driver/integration_test.dart --target=test_driver/hoge_test.dart -d "$UDID"

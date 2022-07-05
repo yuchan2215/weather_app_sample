@@ -13,9 +13,6 @@ jobs:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v3
-      - name: "list"
-        run: |
-          xcrun xctrace list devices
       - name: "start simulator"
         timeout-minutes: 10
         run: |
@@ -76,5 +73,5 @@ jobs:
           emulator-options: -no-snapshot-save -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
           disable-animations: true
           script: |
-            flutter drive --target=test_driver/app.dart -d "emulator-5554"
+            flutter drive --driver=test_driver/integration_test.dart --target=test_driver/hoge_test.dart -d "emulator-5554"
 
