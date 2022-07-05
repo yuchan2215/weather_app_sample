@@ -27,13 +27,19 @@ void main() {
     await tester.tap(find.byKey(settingApiKeyOpenKey));
     await tester.pumpAndSettle();
 
+    //APIキーの入力をアクティブにする
+    await tester.tap(find.byKey(apiKeyTextFieldKey));
+    await tester.pumpAndSettle();
+
     //APIキーを入力する
     await tester.enterText(find.byKey(apiKeyTextFieldKey), testKey);
     await tester.pumpAndSettle();
 
+
     //OKボタンを押す
     await tester.tap(find.byKey(opBtnKey));
     await tester.pumpAndSettle();
+
 
     //ローカル保存チャック
     expect(ApiKey.key, testKey);

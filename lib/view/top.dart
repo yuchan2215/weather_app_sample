@@ -67,7 +67,7 @@ class MyHomePage extends ConsumerWidget {
       if (v == null || v.isEmpty) {
         fToast.showToast(
           child: const ToastWidget(
-            message: "APIキーの編集をキャンセルしました。",
+            message: "キャンセルしました",
             backgroundColor: Colors.amber,
             textColor: Colors.black,
             icon: Icons.warning_amber,
@@ -79,7 +79,7 @@ class MyHomePage extends ConsumerWidget {
           child: ToastWidget(
             backgroundColor: Theme.of(context).primaryColor,
             textColor: Theme.of(context).primaryTextTheme.bodyText1?.color,
-            message: "APIキーの保存に成功しました。",
+            message: "保存に成功しました",
             icon: Icons.check_circle_outline,
           ),
         );

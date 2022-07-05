@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
           if (sc.hasData) {
             return MyHomePage();
           } else {
-            return const Scaffold();
+            return const Scaffold(body: CircularProgressIndicator(),);
           }
         },
       ),

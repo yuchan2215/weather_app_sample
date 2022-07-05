@@ -14,6 +14,7 @@ Future<String?> getStringFromDialog(BuildContext context,
       builder: (BuildContext dialogContext) {
         String text = ""; //入力されたテキストを一時的に格納しておく。
         return AlertDialog(
+            contentPadding: EdgeInsets.all(12),
             title: Text(title),
             content: Column(mainAxisSize: MainAxisSize.min, children: [
               Text(desc),
