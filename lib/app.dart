@@ -1,10 +1,10 @@
+import 'package:async/async.dart';
 import 'package:flutter/material.dart';
-
-import 'pages/top.dart';
+import 'package:weather_app_sample/core/api_key.dart';
+import 'package:weather_app_sample/view/top.dart';
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
+  MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +13,26 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(),
+      home: FutureBuilder(
+        future: _load(), //async function
+        builder: (context, sc) {
+          if (sc.hasData) {
+            return MyHomePage();
+          } else {
+            return const Scaffold();
+          }
+        },
+      ),
     );
+  }
+
+  final _memoizer = AsyncMemoizer();
+
+  Future<bool> _load() async {
+    return await _memoizer.runOnce(() async {
+      debugPrint("_loadが呼び出されたよ！");
+      await ApiKey.loadStorage();
+      return Future<bool>.value(true);
+    });
   }
 }
